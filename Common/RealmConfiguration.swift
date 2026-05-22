@@ -32,7 +32,8 @@ let kRealmDefaultConfiguration = {
             default:
                 break
             }
-        }
+        },
+        objectTypes: [Message.self]
     )
     return config
 }()
