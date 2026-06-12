@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 private let pendingMessageProcessingQueue = DispatchQueue(label: "me.fin.bark.pending-message-processing", qos: .userInitiated)
 let kBarkMessagesDidChangeNotification = Notification.Name("com.bark.messagesDidChange")
@@ -132,6 +133,7 @@ extension AppDelegate {
 
                 let expiredMessages = realm.objects(Message.self)
                     .filter("expireDate != nil AND expireDate <= %@", now)
+                let expiredMessageIds = Array(expiredMessages.map(\.id))
 
                 if !messagesToAdd.isEmpty || !expiredMessages.isEmpty {
                     do {
@@ -150,6 +152,10 @@ extension AppDelegate {
                     } catch {
                         // 一般不会失败，真失败了算你小子运气差
                     }
+                }
+
+                if !expiredMessageIds.isEmpty {
+                    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: expiredMessageIds)
                 }
 
                 for plistUrl in plistFiles {

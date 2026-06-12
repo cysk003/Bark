@@ -47,7 +47,7 @@ class ArchiveProcessor: NotificationContentProcessor {
 
             // 准备消息数据字典
             var messageDict: [String: Any] = [:]
-            let messageId = (id != nil && !id!.isEmpty) ? id! : UUID().uuidString
+            let messageId = (id != nil && !id!.isEmpty) ? id! : identifier
             messageDict["id"] = messageId
             
             if let title = title {
