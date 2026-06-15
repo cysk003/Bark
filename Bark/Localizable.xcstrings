@@ -4029,6 +4029,34 @@
         }
       }
     },
+    "ttl" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TTL (seconds)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TTL（秒）"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TTL (saniye)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有效期（秒）"
+          }
+        }
+      }
+    },
     "toggle" : {
       "extractionState" : "manual",
       "localizations" : {

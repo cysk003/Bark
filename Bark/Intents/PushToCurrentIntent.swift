@@ -39,6 +39,9 @@ struct PushToCurrentIntent: AppIntent {
     
     @Parameter(title: "group")
     var group: String?
+
+    @Parameter(title: "ttl")
+    var ttl: Int?
     
     func perform() async throws -> some IntentResult & ReturnsValue<Bool> {
         guard let address = URL(string: address) else {
@@ -73,6 +76,9 @@ struct PushToCurrentIntent: AppIntent {
         }
         if let group, !group.isEmpty {
             params["group"] = group
+        }
+        if let ttl {
+            params["ttl"] = ttl
         }
         
         let response = await AF.request(address, method: .post, parameters: params, encoding: JSONEncoding.default)
