@@ -70,6 +70,7 @@ class MessageListViewController: BaseViewController<MessageListViewModel> {
         tableView.register(MessageGroupTableViewCell.self, forCellReuseIdentifier: "\(MessageGroupTableViewCell.self)")
         tableView.rx.setDelegate(self).disposed(by: rx.disposeBag)
         tableView.mj_footer = MJRefreshAutoFooter()
+        tableView.dragInteractionEnabled = false
         
         return tableView
     }()
